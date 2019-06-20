@@ -3,6 +3,9 @@ package com.timofriedl.tum.linalg;
 /**
  * Solves linear equotations as {@link DoubleMatrix}es with gaussian
  * elimination.
+ * 
+ * @author Valentin Bertle
+ * @author Timo Friedl
  */
 public class GaussianSolver {
 

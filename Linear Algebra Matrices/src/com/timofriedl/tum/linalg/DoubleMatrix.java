@@ -2,6 +2,8 @@ package com.timofriedl.tum.linalg;
 
 /**
  * Represents a table of double values with a given width and height.
+ * 
+ * @author Timo Friedl
  */
 public class DoubleMatrix {
 
@@ -243,8 +245,17 @@ public class DoubleMatrix {
 		return numbers.length;
 	}
 
+	/**
+	 * Just for testing purpose; won't be there in final version
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
-		DoubleMatrix A = new DoubleMatrix(new double[][] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } });
+		DoubleMatrix A = new DoubleMatrix(new double[][] { //
+				{ 1, 2, 3 }, //
+				{ 4, 5, 6 }, //
+				{ 7, 8, 9 } //
+		});
 		A.print();
 
 		System.out.println("Square: " + A.isSquare());
