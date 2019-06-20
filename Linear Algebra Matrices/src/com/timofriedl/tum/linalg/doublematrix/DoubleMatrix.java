@@ -1,4 +1,4 @@
-package com.timofriedl.tum.linalg;
+package com.timofriedl.tum.linalg.doublematrix;
 
 /**
  * Represents a table of double values with a given width and height.
@@ -155,7 +155,7 @@ public class DoubleMatrix {
 	 * @param x       the x offset
 	 * @param y       the y offset
 	 */
-	private void paste(DoubleMatrix toPaste, int x, int y) {
+	public void paste(DoubleMatrix toPaste, int x, int y) {
 		if (x < 0 || y < 0 || x + toPaste.getWidth() > getWidth() || y + toPaste.getHeight() > getHeight())
 			throw new IllegalArgumentException("The bounds of the matrix to paste are outside of this matrix.");
 
