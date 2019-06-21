@@ -24,7 +24,7 @@ public class DeterminantCalculator extends DoubleMatrixAlgorithm {
    * Calculates faculty of a certain number
    * 
    * @param n
-   * @return
+   * @return faculty
    */
   private int faculty(int n) {
     int sum = n;
@@ -52,7 +52,7 @@ public class DeterminantCalculator extends DoubleMatrixAlgorithm {
    * Creates an array for a certain n: [0,...,n-1]
    * 
    * @param n the lenght of the array
-   * @return
+   * @return created array
    */
   private int[] makeArray(int n) {
     int[] array = new int[n];
@@ -113,7 +113,7 @@ public class DeterminantCalculator extends DoubleMatrixAlgorithm {
    * calculates all permutations of an array: [1,...,n]
    * 
    * @param n the lenght of the permutation array: [1,...,n]
-   * @return
+   * @return an 2D array with all permutations of [1,...,n]
    */
   private int[][] permutations(int n) {
     int[] firstPermutation = makeArray(n);
@@ -151,7 +151,7 @@ public class DeterminantCalculator extends DoubleMatrixAlgorithm {
    * Calculates determinant
    * 
    * @param A the matrix whose determinant will be calculated
-   * @return
+   * @return the determinant
    */
   public double determinant() {
     DoubleMatrix A = super.inputMatrix;
