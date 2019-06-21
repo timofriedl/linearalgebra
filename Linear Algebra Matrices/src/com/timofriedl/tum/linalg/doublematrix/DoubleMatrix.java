@@ -1,5 +1,9 @@
 package com.timofriedl.tum.linalg.doublematrix;
 
+import java.util.Arrays;
+
+import com.timofriedl.tum.linalg.doublevector.DoubleVector;
+
 /**
  * Represents a table of double values with a given width and height.
  * 
@@ -75,7 +79,28 @@ public class DoubleMatrix {
 	}
 
 	/**
-	 * Scales all numbers of a given row of this matrix with a given factor.
+	 * Calculates the matrix multiplication with a second {@link DoubleMatrix}.
+	 * 
+	 * <code>B</code> must be as tall as <code>this</code> is wide.
+	 * 
+	 * @param B the second matrix to multiply
+	 */
+	public DoubleMatrix multiply(DoubleMatrix B) {
+		if (B.getHeight() != getWidth())
+			throw new IllegalArgumentException("Matrix B must be as tall as A is wide when multiplicating them.");
+
+		final DoubleMatrix result = new DoubleMatrix(B.getWidth(), getHeight());
+
+		for (int y = 0; y < getHeight(); y++)
+			for (int x = 0; x < result.getWidth(); x++)
+				result.set(x, y, getRow(y).scalarProduct(B.getColumn(x)));
+
+		return result;
+	}
+
+	/**
+	 * Scales all numbers of a given row of this {@link DoubleMatrix} with a given
+	 * factor.
 	 * 
 	 * @param rowNr  the y position
 	 * @param factor the scaling factor
@@ -89,7 +114,8 @@ public class DoubleMatrix {
 	}
 
 	/**
-	 * Scales all numbers of a given column of this matrix with a given factor.
+	 * Scales all numbers of a given column of this {@link DoubleMatrix} with a
+	 * given factor.
 	 * 
 	 * @param columnNr the x position
 	 * @param factor   the scaling factor
@@ -104,7 +130,7 @@ public class DoubleMatrix {
 	}
 
 	/**
-	 * Scales all numbers of this matrix with the given factor.
+	 * Scales all numbers of this {@link DoubleMatrix} with the given factor.
 	 * 
 	 * @param factor the scaling factor
 	 */
@@ -115,8 +141,8 @@ public class DoubleMatrix {
 	}
 
 	/**
-	 * Resizes this matrix to a new given size, adding zeros if size increases and
-	 * deleting numbers if size decreases.
+	 * Resizes this {@link DoubleMatrix} to a new given size, adding zeros if size
+	 * increases and deleting numbers if size decreases.
 	 * 
 	 * @param width  the new width of this matrix
 	 * @param height the new height of this matrix
@@ -155,7 +181,7 @@ public class DoubleMatrix {
 	}
 
 	/**
-	 * Returns a copy of this matrix with the same bounds and content.
+	 * Returns a copy of this {@link DoubleMatrix} with the same bounds and content.
 	 */
 	@Override
 	public DoubleMatrix clone() {
@@ -163,8 +189,8 @@ public class DoubleMatrix {
 	}
 
 	/**
-	 * Filles this matrix at a given offset with the numbers of a second matrix,
-	 * failing if this matrix is too small.
+	 * Filles this {@link DoubleMatrix} at a given offset with the numbers of a
+	 * second matrix, failing if this matrix is too small.
 	 * 
 	 * @param toPaste the matrix to paste in this matrix
 	 * @param x       the x offset
@@ -180,8 +206,8 @@ public class DoubleMatrix {
 	}
 
 	/**
-	 * Appends a second matrix on the right of this matrix, failing if the height is
-	 * different.
+	 * Appends a second {@link DoubleMatrix} on the right of this matrix, failing if
+	 * the height is different.
 	 * 
 	 * @param secondMatrix the matrix to concatenate with this
 	 */
@@ -196,7 +222,7 @@ public class DoubleMatrix {
 	}
 
 	/**
-	 * Prints a row of this matrix to the console.
+	 * Prints a row of this {@link DoubleMatrix} to the console.
 	 * 
 	 * @param rowNr the number of the row to print
 	 */
@@ -207,7 +233,7 @@ public class DoubleMatrix {
 	}
 
 	/**
-	 * Prints this matrix to the console.
+	 * Prints this {@link DoubleMatrix} to the console.
 	 */
 	public void print() {
 		for (int rowNr = 0; rowNr < getHeight(); rowNr++)
@@ -216,7 +242,7 @@ public class DoubleMatrix {
 	}
 
 	/**
-	 * Sets a value of this matrix at the given position.
+	 * Sets a value of this {@link DoubleMatrix} at the given position.
 	 * 
 	 * @param x     the x coordinate of the position
 	 * @param y     the y coordinate of the position
@@ -227,7 +253,7 @@ public class DoubleMatrix {
 	}
 
 	/**
-	 * Returns the value of this matrix at the given position.
+	 * Returns the value of this {@link DoubleMatrix} at the given position.
 	 * 
 	 * @param x the x coordinate of the position
 	 * @param y the y coordinate of the position
@@ -238,7 +264,36 @@ public class DoubleMatrix {
 	}
 
 	/**
-	 * Checks if this matrix is equally wide and tall.
+	 * Returns a row of this {@link DoubleMatrix} at a given row number as a
+	 * {@link DoubleVector}.
+	 * 
+	 * @param rowNr the number of the row to copy
+	 * @return the selected row of this matrix as a vector
+	 * @see DoubleVector
+	 */
+	public DoubleVector getRow(int rowNr) {
+		return new DoubleVector(Arrays.copyOf(numbers[rowNr], numbers.length));
+	}
+
+	/**
+	 * Returns a column of this {@link DoubleMatrix} at a given column number as a
+	 * {@link DoubleVector}.
+	 * 
+	 * @param columnNr the number of the column to copy
+	 * @return the selected column of this matrix as a vector
+	 * @see DoubleVector
+	 */
+	public DoubleVector getColumn(int columnNr) {
+		final DoubleVector column = new DoubleVector(getHeight());
+
+		for (int y = 0; y < getHeight(); y++)
+			column.set(y, get(columnNr, y));
+
+		return column;
+	}
+
+	/**
+	 * Checks if this {@link DoubleMatrix} is equally wide and tall.
 	 * 
 	 * @return true if squared, false if rectangled
 	 */
@@ -247,52 +302,17 @@ public class DoubleMatrix {
 	}
 
 	/**
-	 * @return the width of this matrix
+	 * @return the width of this {@link DoubleMatrix}
 	 */
 	public int getWidth() {
 		return numbers[0].length;
 	}
 
 	/**
-	 * @return the height of this matrix
+	 * @return the height of this {@link DoubleMatrix}
 	 */
 	public int getHeight() {
 		return numbers.length;
-	}
-
-	/**
-	 * Just for testing purpose; won't be there in final version
-	 * 
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		DoubleMatrix A = new DoubleMatrix(new double[][] { //
-				{ 1, 2, 3 }, //
-				{ 4, 5, 6 }, //
-				{ 7, 8, 9 } //
-		});
-		A.print();
-
-		System.out.println("Square: " + A.isSquare());
-
-		A.concatenate(identity(3));
-		A.print();
-
-		DoubleMatrix B = A.copy(1, 1, 4, 2);
-		B.print();
-
-		B = B.clone();
-		B.paste(new DoubleMatrix(2, 2), 2, 0);
-		B.print();
-
-		B.resize(3, 3);
-		B.print();
-
-		B.scale(100);
-		B.print();
-
-		B.scaleRow(0, 0.0001);
-		B.print();
 	}
 
 }
