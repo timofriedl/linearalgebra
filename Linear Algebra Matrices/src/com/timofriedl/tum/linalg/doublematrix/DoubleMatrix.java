@@ -60,6 +60,21 @@ public class DoubleMatrix {
 	}
 
 	/**
+	 * Adds the values of a second {@link DoubleMatrix} with the same bounds to
+	 * this.
+	 * 
+	 * @param toAdd the matrix to add
+	 */
+	public void add(DoubleMatrix toAdd) {
+		if (toAdd.getWidth() != getWidth() || toAdd.getHeight() != getHeight())
+			throw new IllegalArgumentException("Matrices must have same size when adding them.");
+
+		for (int y = 0; y < getHeight(); y++)
+			for (int x = 0; x < getWidth(); x++)
+				set(x, y, get(x, y) + toAdd.get(x, y));
+	}
+
+	/**
 	 * Scales all numbers of a given row of this matrix with a given factor.
 	 * 
 	 * @param rowNr  the y position

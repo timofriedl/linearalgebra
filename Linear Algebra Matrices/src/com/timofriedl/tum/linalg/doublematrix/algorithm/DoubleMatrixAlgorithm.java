@@ -1,4 +1,4 @@
-package com.timofriedl.tum.linalg.doublematrix.doublematrix.algorithm;
+package com.timofriedl.tum.linalg.doublematrix.algorithm;
 
 import com.timofriedl.tum.linalg.doublematrix.DoubleMatrix;
 
