@@ -98,6 +98,32 @@ public class DoubleVector {
 	public DoubleVector clone() {
 		return new DoubleVector(Arrays.copyOf(numbers, size()));
 	}
+	
+	/**
+	 * Prints this {@link DoubleVector} horizontally on the command line.
+	 * 
+	 * Example: ....................................</br>
+	 * 1.0 2.0 3.0
+	 */
+	public void printHorizontally() {
+		for (int i = 0; i < size(); i++)
+			System.out.print(get(i) + "\t");
+		System.out.println();
+	}
+
+	/**
+	 * Prints this {@link DoubleVector} vertically on the command line.
+	 * 
+	 * Example: .....................................</br>
+	 * 1.0 ..........................................</br>
+	 * 2.0 ..........................................</br>
+	 * 3.0
+	 */
+	public void printVertically() {
+		for (int i = 0; i < size(); i++)
+			System.out.println(get(i) + "\t");
+		System.out.println();
+	}
 
 	/**
 	 * Returns the number of dimensions of this {@link DoubleVector}.
