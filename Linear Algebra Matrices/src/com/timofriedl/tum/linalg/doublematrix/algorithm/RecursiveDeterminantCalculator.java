@@ -16,13 +16,17 @@ public class RecursiveDeterminantCalculator extends DoubleMatrixAlgorithm {
       throw new IllegalArgumentException("The matrix should be a n x n matrix.");
   }
 
+  public double recursiveDeterminatn() {
+    return recursiveDeterminant(super.inputMatrix);
+  }
+
   /**
    * Calculates determinant recursively
    * 
    * @param matrix
    * @return determinant
    */
-  public double recursiveDeterminant(DoubleMatrix matrix) {
+  private double recursiveDeterminant(DoubleMatrix matrix) {
     if (matrix.getHeight() == 1)
       return matrix.get(0, 0);
 
