@@ -16,7 +16,7 @@ public class RecursiveDeterminantCalculator extends DoubleMatrixAlgorithm {
       throw new IllegalArgumentException("The matrix should be a n x n matrix.");
   }
 
-  public double recursiveDeterminatn() {
+  public double recursiveDeterminant() {
     return recursiveDeterminant(super.inputMatrix);
   }
 
