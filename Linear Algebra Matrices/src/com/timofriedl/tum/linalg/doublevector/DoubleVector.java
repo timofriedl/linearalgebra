@@ -121,7 +121,7 @@ public class DoubleVector {
 	 */
 	public void printVertically() {
 		for (int i = 0; i < size(); i++)
-			System.out.println(get(i) + "\t");
+			System.out.println(get(i));
 		System.out.println();
 	}
 

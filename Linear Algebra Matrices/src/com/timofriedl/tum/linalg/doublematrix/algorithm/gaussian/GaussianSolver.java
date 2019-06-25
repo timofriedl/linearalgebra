@@ -1,6 +1,7 @@
-package com.timofriedl.tum.linalg.doublematrix.algorithm;
+package com.timofriedl.tum.linalg.doublematrix.algorithm.gaussian;
 
 import com.timofriedl.tum.linalg.doublematrix.DoubleMatrix;
+import com.timofriedl.tum.linalg.doublematrix.algorithm.DoubleMatrixAlgorithm;
 
 /**
  * Solves linear equotations as {@link DoubleMatrix}es with gaussian
@@ -9,7 +10,7 @@ import com.timofriedl.tum.linalg.doublematrix.DoubleMatrix;
  * @author Valentin Bertle
  * @author Timo Friedl
  */
-public class GaussianSolver extends DoubleMatrixAlgorithm {
+public abstract class GaussianSolver extends DoubleMatrixAlgorithm {
 
 	/**
 	 * Creates a new solver instance with a given matrix to solve.
@@ -32,10 +33,6 @@ public class GaussianSolver extends DoubleMatrixAlgorithm {
 	 * 
 	 * @return the solved matrix
 	 */
-	public DoubleMatrix solve() {
-		// TODO solve
-
-		return null;
-	}
+	public abstract DoubleMatrix solve();
 
 }
