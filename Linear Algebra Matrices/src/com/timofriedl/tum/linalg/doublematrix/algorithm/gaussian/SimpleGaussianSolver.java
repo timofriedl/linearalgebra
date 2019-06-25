@@ -6,6 +6,8 @@ import com.timofriedl.tum.linalg.doublevector.DoubleVector;
 /**
  * A primitive implementation of an {@link GaussianSolver}. No speed
  * improvements or other stuff. Just a simple algorithm.
+ * 
+ * @author Timo Friedl
  */
 public class SimpleGaussianSolver extends GaussianSolver {
 

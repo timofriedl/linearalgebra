@@ -5,6 +5,8 @@ import com.timofriedl.tum.linalg.doublematrix.algorithm.DoubleMatrixAlgorithm;
 
 /**
  * Super class for all different determinant calculators
+ * 
+ * @author Timo Friedl
  */
 public abstract class DeterminantCalculator extends DoubleMatrixAlgorithm {
 
