@@ -7,12 +7,12 @@ import com.timofriedl.tum.linalg.doublematrix.DoubleMatrix;
  * 
  * @author Valentin Bertle
  */
-public class SimpleDeterminantCalculator extends DeterminantCalculator {
+public class LeibnitzDeterminantCalculator extends DeterminantCalculator {
 
 	/**
 	 * Creates a new instance for determinant calculations
 	 */
-	public SimpleDeterminantCalculator(DoubleMatrix inputMatrix) {
+	public LeibnitzDeterminantCalculator(DoubleMatrix inputMatrix) {
 		super(inputMatrix);
 	}
 
