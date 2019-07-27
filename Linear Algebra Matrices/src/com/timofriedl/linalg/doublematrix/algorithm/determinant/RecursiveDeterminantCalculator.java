@@ -1,6 +1,6 @@
-package com.timofriedl.tum.linalg.doublematrix.algorithm.determinant;
+package com.timofriedl.linalg.doublematrix.algorithm.determinant;
 
-import com.timofriedl.tum.linalg.doublematrix.DoubleMatrix;
+import com.timofriedl.linalg.doublematrix.DoubleMatrix;
 
 /**
  * Contains methods for calculating the determinant recursively of a

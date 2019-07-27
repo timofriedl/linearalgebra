@@ -1,4 +1,4 @@
-package com.timofriedl.tum.linalg.doublevector;
+package com.timofriedl.linalg.doublevector;
 
 import java.util.Arrays;
 

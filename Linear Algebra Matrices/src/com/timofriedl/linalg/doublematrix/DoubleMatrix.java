@@ -1,7 +1,8 @@
-package com.timofriedl.tum.linalg.doublematrix;
+package com.timofriedl.linalg.doublematrix;
 
 import java.util.Arrays;
-import com.timofriedl.tum.linalg.doublevector.DoubleVector;
+
+import com.timofriedl.linalg.doublevector.DoubleVector;
 
 /**
  * Represents a table of double values with a given width and height.

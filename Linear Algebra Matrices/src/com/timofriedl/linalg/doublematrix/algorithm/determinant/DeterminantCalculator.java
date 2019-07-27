@@ -1,7 +1,7 @@
-package com.timofriedl.tum.linalg.doublematrix.algorithm.determinant;
+package com.timofriedl.linalg.doublematrix.algorithm.determinant;
 
-import com.timofriedl.tum.linalg.doublematrix.DoubleMatrix;
-import com.timofriedl.tum.linalg.doublematrix.algorithm.DoubleMatrixAlgorithm;
+import com.timofriedl.linalg.doublematrix.DoubleMatrix;
+import com.timofriedl.linalg.doublematrix.algorithm.DoubleMatrixAlgorithm;
 
 /**
  * Super class for all different determinant calculators

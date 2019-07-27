@@ -1,7 +1,7 @@
-package com.timofriedl.tum.linalg.doublematrix.algorithm.gaussian;
+package com.timofriedl.linalg.doublematrix.algorithm.gaussian;
 
-import com.timofriedl.tum.linalg.doublematrix.DoubleMatrix;
-import com.timofriedl.tum.linalg.doublevector.DoubleVector;
+import com.timofriedl.linalg.doublematrix.DoubleMatrix;
+import com.timofriedl.linalg.doublevector.DoubleVector;
 
 /**
  * A primitive implementation of an {@link GaussianSolver}. No speed

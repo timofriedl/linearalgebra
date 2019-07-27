@@ -1,6 +1,6 @@
-package com.timofriedl.tum.linalg.doublematrix.algorithm;
+package com.timofriedl.linalg.doublematrix.algorithm;
 
-import com.timofriedl.tum.linalg.doublematrix.DoubleMatrix;
+import com.timofriedl.linalg.doublematrix.DoubleMatrix;
 
 /**
  * Represents any algorithm that uses a {@link DoubleMatrix} as input for some
