@@ -118,6 +118,7 @@ public class DoubleMatrix {
 	 * <code>B</code> must be as tall as <code>this</code> is wide.
 	 * 
 	 * @param B the second matrix to multiply
+	 * @return the result of the multiplication
 	 */
 	public DoubleMatrix multiply(DoubleMatrix B) {
 		if (B.getHeight() != getWidth())
@@ -256,8 +257,8 @@ public class DoubleMatrix {
 
 	/**
 	 * Builds a new {@link DoubleMatrix} with the content of this matrix,
-	 * concatenated with a second one that is on the right, failing if the heights are
-	 * different.
+	 * concatenated with a second one that is on the right, failing if the heights
+	 * are different.
 	 * 
 	 * @param B the matrix to concatenate with this
 	 */
@@ -265,7 +266,7 @@ public class DoubleMatrix {
 		if (B.getHeight() != getHeight())
 			throw new IllegalArgumentException("Matrices must have the same height when concatenating them.");
 
-		DoubleMatrix result = new DoubleMatrix(getWidth() + B.getWidth(), getHeight());
+		final DoubleMatrix result = new DoubleMatrix(getWidth() + B.getWidth(), getHeight());
 		result.paste(this, 0, 0);
 		result.paste(B, getWidth(), 0);
 
@@ -273,7 +274,23 @@ public class DoubleMatrix {
 	}
 
 	/**
-	 * Removes a certain row of this {@link DoubleMatrix}
+	 * Returns a copy of this matrix where all entries are flipped diagonally.
+	 * 
+	 * @return the transposed matrix
+	 */
+	public DoubleMatrix transpose() {
+		final DoubleMatrix result = new DoubleMatrix(getHeight(), getWidth());
+
+		for (int y = 0; y < getHeight(); y++)
+			for (int x = 0; x < getWidth(); x++)
+				result.set(y, x, get(x, y));
+
+		return result;
+	}
+
+	/**
+	 * Returns a new {@link DoubleMatrix} without certain row of this
+	 * {@link DoubleMatrix}
 	 * 
 	 * @param rowNr
 	 */
@@ -295,7 +312,8 @@ public class DoubleMatrix {
 	}
 
 	/**
-	 * Removes a certain column of this {@link DoubleMatrix}
+	 * Returns a new {@link DoubleMatrix} without a certain column of this
+	 * {@link DoubleMatrix}
 	 * 
 	 * @param columnNr index of the column
 	 */
@@ -350,7 +368,7 @@ public class DoubleMatrix {
 		if (!(o instanceof DoubleMatrix))
 			return false;
 
-		return Arrays.equals(numbers, ((DoubleMatrix) o).numbers);
+		return Arrays.deepEquals(numbers, ((DoubleMatrix) o).numbers);
 	}
 
 	/**
@@ -411,6 +429,15 @@ public class DoubleMatrix {
 	 */
 	public boolean isSquare() {
 		return getWidth() == getHeight();
+	}
+
+	/**
+	 * Checks if this {@link DoubleMatrix} is equal to its transposed matrix.
+	 * 
+	 * @return true if this is symmetric
+	 */
+	public boolean isSymmetric() {
+		return equals(transpose());
 	}
 
 	/**
