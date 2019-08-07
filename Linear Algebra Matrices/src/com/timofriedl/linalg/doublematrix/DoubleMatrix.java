@@ -175,23 +175,6 @@ public class DoubleMatrix {
 	}
 
 	/**
-	 * Resizes this {@link DoubleMatrix} to a new given size, adding zeros if size
-	 * increases and deleting numbers if size decreases.
-	 * 
-	 * @param width  the new width of this matrix
-	 * @param height the new height of this matrix
-	 */
-	public DoubleMatrix resize(int width, int height) {
-		double[][] numbers = new double[height][width];
-
-		for (int y = 0; y < numbers.length && y < getHeight(); y++)
-			for (int x = 0; x < numbers[0].length && x < getWidth(); x++)
-				numbers[y][x] = get(x, y);
-
-		return new DoubleMatrix(numbers);
-	}
-
-	/**
 	 * Copies an area of this matrix to another {@link DoubleMatrix} instance,
 	 * failing if the given area is not completely contained by this matrix.
 	 * 
@@ -272,19 +255,21 @@ public class DoubleMatrix {
 	}
 
 	/**
-	 * Appends a second {@link DoubleMatrix} on the right of this matrix, failing if
-	 * the height is different.
+	 * Builds a new {@link DoubleMatrix} with the content of this matrix,
+	 * concatenated with a second one that is on the right, failing if the heights are
+	 * different.
 	 * 
-	 * @param secondMatrix the matrix to concatenate with this
+	 * @param B the matrix to concatenate with this
 	 */
-	public void concatenate(DoubleMatrix secondMatrix) {
-		if (secondMatrix.getHeight() != getHeight())
+	public DoubleMatrix concatenate(DoubleMatrix B) {
+		if (B.getHeight() != getHeight())
 			throw new IllegalArgumentException("Matrices must have the same height when concatenating them.");
 
-		final int oldWidth = getWidth();
+		DoubleMatrix result = new DoubleMatrix(getWidth() + B.getWidth(), getHeight());
+		result.paste(this, 0, 0);
+		result.paste(B, getWidth(), 0);
 
-		resize(oldWidth + secondMatrix.getWidth(), getHeight());
-		paste(secondMatrix, oldWidth, 0);
+		return result;
 	}
 
 	/**
